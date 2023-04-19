@@ -1,0 +1,38 @@
+.reset-button {
+  width: 84px;
+  height: 30px;
+  background-color: #F4F3FB;
+  color: #1A0DAB;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+}
+
+.text--modifiers {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px dashed #979797;
+  border-radius: 10px;
+  width: 986px;
+  margin-left: 108px;
+  margin-top: 20px;
+}
+
+.text--area {
+  width: 986px;
+  margin-left: 108px;
+  border: 1px dashed #979797;
+  border-radius: 10px;
+}
+
+.text-area {
+  display: flex;
+  left: 0;
+  width: 90%;
+}
+.results--sidebar {
+  height: 500px;
+  background-color: #F1F1F1;
+  width: 200px;
+}
