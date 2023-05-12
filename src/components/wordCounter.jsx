@@ -33,14 +33,14 @@ export const WordCounter = () => {
   return (
     <div className="container">
       <h1 className="heading-text">Blog Text Readability Checker</h1>
-      <div className="button--div">
+      <button className="reset-button" onClick={handleReset}>↻ Reset</button>
+      {/* <div className="button--div"> */}
         {/* <div className="metric--selectors">
           <button className={active === "px" ? "px active" : "px"} onClick={() => setActive("px")}>px</button>
           <button className={active === "rem" ? "px active" : "px"} onClick={() => setActive("rem")}>rem</button>
           <button className={active === "em" ? "px active" : "px"} onClick={() => setActive("em")}>em</button>
         </div> */}
-        <button className="reset-button" onClick={handleReset}>↻ Reset</button>
-      </div>
+      {/* </div> */}
       <div className="text--modifiers">
         <p>Google Fonts</p>
         <p>Text Size</p>
@@ -48,11 +48,16 @@ export const WordCounter = () => {
         <p>Text Color</p>
         <p>Background Color</p>
       </div>
-      <h3>Words: {wordCount}</h3>
-      <h3>Characters: {charCount}</h3>
-      <h3>Sentences: {sentenceCount}</h3>
       <div className="input--area">
         <textarea className="text-area" onChange={(e) => handleChange(e)}/>
+      </div>
+      <div className="output--area">
+        <div className="readability--scores">
+          <h3>Details</h3>
+          <h5>Words: {wordCount}</h5>
+          <h5>Characters: {charCount}</h5>
+          <h5>Sentences: {sentenceCount}</h5>
+        </div>
       </div>
     </div>
   )
