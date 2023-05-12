@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import './wordCounter.css';
+// import './wordCounter.css';
+import './wordCounter.scss';
 
 export const WordCounter = () => {
   const [wordCount, setWordCount] = useState(0);
   const [charCount, setCharCount] = useState(0);
   const [sentenceCount, setsentenceCount] = useState(0);
-  const [active, setActive] = useState("px");
+  // Removing "px/rem/em" for now
+  // const [active, setActive] = useState("px");
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -20,6 +22,7 @@ export const WordCounter = () => {
   const handleReset = () => {
     setWordCount(0);
     setCharCount(0);
+    setsentenceCount(0);
   }
 
   // const handleMetric = (value) => {
@@ -28,14 +31,14 @@ export const WordCounter = () => {
   // }
 
   return (
-    <div>
+    <div className="container">
       <h1 className="heading-text">Blog Text Readability Checker</h1>
       <div className="button--div">
-        <div className="metric--selectors">
+        {/* <div className="metric--selectors">
           <button className={active === "px" ? "px active" : "px"} onClick={() => setActive("px")}>px</button>
           <button className={active === "rem" ? "px active" : "px"} onClick={() => setActive("rem")}>rem</button>
           <button className={active === "em" ? "px active" : "px"} onClick={() => setActive("em")}>em</button>
-        </div>
+        </div> */}
         <button className="reset-button" onClick={handleReset}>↻ Reset</button>
       </div>
       <div className="text--modifiers">
@@ -48,11 +51,8 @@ export const WordCounter = () => {
       <h3>Words: {wordCount}</h3>
       <h3>Characters: {charCount}</h3>
       <h3>Sentences: {sentenceCount}</h3>
-      <div className="text--area">
-        <input type="text" className="text-area" onChange={(e) => handleChange(e)}/>
-      </div>
-      <div className="results--sidebar">
-
+      <div className="input--area">
+        <textarea className="text-area" onChange={(e) => handleChange(e)}/>
       </div>
     </div>
   )

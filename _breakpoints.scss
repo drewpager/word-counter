@@ -1,0 +1,66 @@
+// media queries
+$big-mobile: 576px;
+$wp-block-big-mobile: 600px;
+$tablet-width: 768px;
+$wp-block-tablet: 782px;
+$desktop-width: 992px;
+$tween-desktop-width: 1080px;
+$wide-desktop-width: 1200px;
+$superwide-desktop-width: 1400px;
+
+@mixin wp-block-tween {
+	@media (min-width: #{$wp-block-big-mobile}) and (max-width: #{$wp-block-tablet - 1}) {
+		@content;
+	}    
+}
+
+@mixin small-mobile {
+	@media (max-width: #{$big-mobile - 1}) {
+		@content;
+	}
+}
+@mixin mobile {
+	@media (max-width: #{$tablet-width - 1}) {
+		@content;
+	}
+}
+@mixin wp-block-mobile {
+	@media (min-width: #{$wp-block-big-mobile}) {
+		@content;
+	}
+}
+@mixin big-mobile {
+	@media (min-width: #{$big-mobile}) {
+		@content;
+	}
+}
+@mixin tablet {
+    @media (min-width: #{$tablet-width}) {
+      @content;
+    }
+  }
+@mixin wp-tablet {
+    @media (min-width: #{$wp-block-tablet}) {
+      @content;
+    }
+  }
+@mixin desktop {
+	@media (min-width: #{$desktop-width}) {
+		@content;
+	}
+}
+@mixin tween-desktop {
+	@media (min-width: #{$tween-desktop-width}) {
+		@content;
+	}
+}
+@mixin wide {
+	@media (min-width: #{$wide-desktop-width}) {
+		@content;
+	}
+}
+@mixin superwide {
+	@media (min-width: #{$superwide-desktop-width}) {
+		@content;
+	}
+}

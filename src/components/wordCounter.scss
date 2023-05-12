@@ -1,0 +1,132 @@
+@use 'breakpoints';
+
+.container {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.heading-text {
+  font-family: 'GT America', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-left: 1.5rem;
+  margin-top: 3.5rem;
+  text-align: start;
+
+  @include breakpoints.desktop {
+      margin-left: 6.75rem;
+  }
+}
+
+.button--div {
+  width: 61.625rem;
+  margin-left: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include breakpoints.desktop {
+    margin-left: 6.75rem;
+  }
+}
+
+.reset-button {
+  width: 5.25rem;
+  height: 1.875rem;
+  background-color: #F4F3FB;
+  color: #1A0DAB;
+  border-radius: 0.125rem;
+  border: none;
+  cursor: pointer;
+}
+
+/* rem: PX divided by 16 */
+.text--modifiers {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem; 
+  align-items: flex-start;
+  border: 0.0625rem dashed #979797;
+  border-radius: 0.625rem;
+  max-width: 61.625rem;
+  height: 6.6875rem;
+  margin-top: 1.25rem;
+  & > p {
+    font-family: 'GT America', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    color: #757575;
+    margin: 0;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 0.875rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  margin-right: 1.5rem;
+  margin-left: 1.5rem;
+  @include breakpoints.desktop {
+    margin-left: 6.75rem;
+  }
+}
+
+.text-area {
+  font-family: 'GT America', sans-serif;
+  width: 61.625rem;
+  min-height: 47.3125rem;
+  height: fit-content;
+  padding: 0.75rem 1.25rem;
+  // box-sizing: border-box;
+  border: 0.0625rem dashed #979797;
+  border-radius: 0 0 0.625rem 0.625rem;
+  background-color: #FFFFFF;
+  font-size: 1rem;
+  resize: none;
+  outline: none;
+  margin-left: 1.5rem;
+  @include breakpoints.desktop {
+    margin-left: 6.75rem;
+  }
+}
+
+.input--area {
+  width: 100%;
+  // margin-left: 6.75rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+// OLD STYLES
+
+// .metric--selectors {
+//   margin-left: 6.75rem;
+//   border-radius: 4px;
+//   width: 216px;
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 4px 10px 8px;
+//   & > button {
+//     height: 30px;
+//     font-weight: 400;
+//     font-size: 14px;
+//     padding: 5px;
+//     border: none;
+//     cursor: pointer;
+//     background-color: #FFF;
+//     border: 1px solid #979797;
+//     &.active {
+//       height: 30px;
+//       font-weight: 600;
+//       cursor: pointer;
+//       background-color: #EAEAEA;
+//     }
+//   }
+// }
+
+// .px {
+//   width: 33%;
+// }
