@@ -6,6 +6,8 @@ export const WordCounter = () => {
   const [wordCount, setWordCount] = useState(0);
   const [charCount, setCharCount] = useState(0);
   const [sentenceCount, setsentenceCount] = useState(0);
+  const [paragraphCount, setparagraphCount] = useState(0);
+  const [readTime, setReadTime] = useState(0);
   const [fontSize, setFontSize] = useState(16);
   const [lineHeight, setLineHeight] = useState(24);
   const [backgroundColor, setBackgroundColor] = useState("#ffffff");
@@ -13,20 +15,24 @@ export const WordCounter = () => {
   // Removing "px/rem/em" for now
   // const [active, setActive] = useState("px");
 
+  const WORDS_PER_MINUTE = 238;
+
   const handleChange = (e) => {
     e.preventDefault();
     let length = e.target.value
     let words = length.split(' ');
     let sentences = length.split(/[.!?]/g);
+    let paragraphs = length.split(/\n\n/g);
+    let readTime = Math.ceil(words.length / WORDS_PER_MINUTE);
+
     setCharCount(length.length);
     setWordCount(words.length);
     setsentenceCount(sentences.length - 1);
+    setparagraphCount(paragraphs.length);
+    setReadTime(readTime);
   }
 
   const handleReset = () => {
-    setWordCount(0);
-    setCharCount(0);
-    setsentenceCount(0);
     setFontSize(16);
     setLineHeight(24);
     setBackgroundColor("#ffffff");
@@ -115,10 +121,10 @@ export const WordCounter = () => {
           <h3>Details</h3>
           <div><h5>Words</h5><h4>{wordCount}</h4></div>
           <div><h5>Characters</h5><h4>{charCount}</h4></div>
+          <div><h5>Characters</h5><h4>{charCount}</h4></div>
           <div><h5>Sentences</h5><h4>{sentenceCount}</h4></div>
-          <div><h5>Paragraphs</h5><h4>{sentenceCount}</h4></div>
-          <div><h5>Read time</h5><h4>{sentenceCount}</h4></div>
-          <div><h5>Sentences</h5><h4>{sentenceCount}</h4></div>
+          <div><h5>Paragraphs</h5><h4>{paragraphCount}</h4></div>
+          <div><h5>Read time</h5><h4>{readTime} {readTime < 2 ? "Minute" : "Minutes"}</h4></div>
         </div>
       </div>
     </div>

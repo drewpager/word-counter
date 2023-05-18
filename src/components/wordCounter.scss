@@ -40,7 +40,7 @@
   margin-top: 1.25rem;
   margin-right: 1.5rem;
   margin-left: 1.5rem;
-  padding: 0.75rem 1.25rem;
+  padding: 15px 18px;
   justify-content: space-between;
 
     & > p {
@@ -63,6 +63,7 @@
 
   @include breakpoints.mobile {
     display: block;
+    border-radius: 0.625rem 0.625rem 0 0;
     :first-child {
       width: 100%;
       text-align: left;
@@ -84,22 +85,24 @@
 
 .text-area {
   font-family: 'Poppins', sans-serif;
-  // font-size: 1rem;
-  // line-height: 1.5rem;
-  // background-color: #FFFFFF;
   max-width: 61.625rem;
   min-height: 27.3125rem;
   height: fit-content;
-  padding: 2.5rem 2rem;
-  border: 0.0625rem dashed #979797;
-  border-radius: 0 0 0.625rem 0.625rem;
+  padding: 45px 2.5rem;
+  border: 1px dashed #979797;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
   resize: none;
   outline: none;
   margin-left: 1.5rem;
   margin-right: 1.5rem;
+  margin-top: 0;
   
   @include breakpoints.desktop {
     margin-left: 6.75rem;
+    margin-top: 20px;
+    border-top: 1px dashed #979797;
+    border-radius: 10px;
   }
 }
 
