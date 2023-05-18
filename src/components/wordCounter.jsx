@@ -6,6 +6,10 @@ export const WordCounter = () => {
   const [wordCount, setWordCount] = useState(0);
   const [charCount, setCharCount] = useState(0);
   const [sentenceCount, setsentenceCount] = useState(0);
+  const [fontSize, setFontSize] = useState(16);
+  const [lineHeight, setLineHeight] = useState(24);
+  const [backgroundColor, setBackgroundColor] = useState("#ffffff");
+  const [fontColor, setFontColor] = useState("#000000");
   // Removing "px/rem/em" for now
   // const [active, setActive] = useState("px");
 
@@ -23,6 +27,10 @@ export const WordCounter = () => {
     setWordCount(0);
     setCharCount(0);
     setsentenceCount(0);
+    setFontSize(16);
+    setLineHeight(24);
+    setBackgroundColor("#ffffff");
+    setFontColor("#000000");
   }
 
   // const handleMetric = (value) => {
@@ -34,29 +42,83 @@ export const WordCounter = () => {
     <div className="container">
       <h1 className="heading-text">Blog Text Readability Checker</h1>
       <button className="reset-button" onClick={handleReset}>↻ Reset</button>
-      {/* <div className="button--div"> */}
-        {/* <div className="metric--selectors">
-          <button className={active === "px" ? "px active" : "px"} onClick={() => setActive("px")}>px</button>
-          <button className={active === "rem" ? "px active" : "px"} onClick={() => setActive("rem")}>rem</button>
-          <button className={active === "em" ? "px active" : "px"} onClick={() => setActive("em")}>em</button>
-        </div> */}
-      {/* </div> */}
       <div className="text--modifiers">
-        <p>Google Fonts</p>
-        <p>Text Size</p>
-        <p>Line Height</p>
-        <p>Text Color</p>
-        <p>Background Color</p>
+        <div>
+          <p>Google Fonts</p>
+          <select width="100%">
+            <option value="arial">Arial</option>
+          </select>
+        </div>
+        <div>
+          <p>Text Size</p>
+          <input 
+            type="number" 
+            min="10" 
+            max="100" 
+            defaultValue={fontSize}
+            value={fontSize}
+            onChange={(e) => setFontSize(e.target.value)} 
+          />
+        </div>
+        <div>
+          <p>Line Height</p>
+          <input 
+            type="number" 
+            min="10" 
+            max="100" 
+            defaultValue={lineHeight}
+            value={lineHeight}
+            onChange={(e) => setLineHeight(e.target.value)} 
+            />
+        </div>
+        <div>
+          <p>Text Color</p>
+          <input 
+            type="color" 
+            defaultValue={fontColor} 
+            value={fontColor}
+            onChange={(e) => setFontColor(e.target.value)}
+          />
+        </div>
+        <div>
+          <p>Background Color</p>
+          <input 
+            type="color" 
+            defaultValue={backgroundColor} 
+            value={backgroundColor}
+            onChange={(e) => setBackgroundColor(e.target.value)}
+          />
+        </div>
       </div>
       <div className="input--area">
-        <textarea className="text-area" onChange={(e) => handleChange(e)}/>
+        <textarea 
+          style={{ 
+            fontSize: `${fontSize}px`, 
+            lineHeight: `${lineHeight}px`,
+            backgroundColor: `${backgroundColor}`,
+            color: `${fontColor}`
+          }} 
+          className="text-area" 
+          onChange={(e) => handleChange(e)}
+        />
       </div>
+
       <div className="output--area">
         <div className="readability--scores">
+          <h3>Readability Scores</h3>
+          <div><h5>Text Size</h5><h4>Good</h4></div>
+          <div><h5>Line Height</h5><h4>Good</h4></div>
+          <div><h5>Contrast</h5><h4>Poor</h4></div>
+          <div><h5>Blog Width</h5><h4>Bad</h4></div>
+        </div>
+        <div className="readability--scores">
           <h3>Details</h3>
-          <h5>Words: {wordCount}</h5>
-          <h5>Characters: {charCount}</h5>
-          <h5>Sentences: {sentenceCount}</h5>
+          <div><h5>Words</h5><h4>{wordCount}</h4></div>
+          <div><h5>Characters</h5><h4>{charCount}</h4></div>
+          <div><h5>Sentences</h5><h4>{sentenceCount}</h4></div>
+          <div><h5>Paragraphs</h5><h4>{sentenceCount}</h4></div>
+          <div><h5>Read time</h5><h4>{sentenceCount}</h4></div>
+          <div><h5>Sentences</h5><h4>{sentenceCount}</h4></div>
         </div>
       </div>
     </div>

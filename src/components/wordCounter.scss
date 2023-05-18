@@ -36,7 +36,7 @@
   border: 0.0625rem dashed #979797;
   border-radius: 0.625rem;
   max-width: 61.625rem;
-  height: 6.6875rem;
+  height: fit-content;
   margin-top: 1.25rem;
   margin-right: 1.5rem;
   margin-left: 1.5rem;
@@ -60,21 +60,43 @@
     padding: 1.5rem 1.25rem;
     justify-content: space-between;
   }
+
+  @include breakpoints.mobile {
+    display: block;
+    :first-child {
+      width: 100%;
+      text-align: left;
+    }
+
+    :nth-child(2), :nth-child(3) {
+      width: 100%;
+      // align-content: baseline;
+      text-align: left;
+    }
+
+    :nth-child(4), :nth-child(5) {
+      width: 50%;
+      // align-content: baseline;
+      text-align: left;
+    }
+  }
 }
 
 .text-area {
-  font-family: 'GT America', sans-serif;
-  width: 61.625rem;
-  min-height: 47.3125rem;
+  font-family: 'Poppins', sans-serif;
+  // font-size: 1rem;
+  // line-height: 1.5rem;
+  // background-color: #FFFFFF;
+  max-width: 61.625rem;
+  min-height: 27.3125rem;
   height: fit-content;
   padding: 2.5rem 2rem;
   border: 0.0625rem dashed #979797;
   border-radius: 0 0 0.625rem 0.625rem;
-  background-color: #FFFFFF;
-  font-size: 1rem;
   resize: none;
   outline: none;
   margin-left: 1.5rem;
+  margin-right: 1.5rem;
   
   @include breakpoints.desktop {
     margin-left: 6.75rem;
@@ -89,17 +111,53 @@
 }
 
 .output--area {
-  margin-top: 3rem;
+  margin-top: 2rem;
   background-color: #F1F1F1;
   padding: 3rem 1.5rem;
 }
 
 .readability--scores {
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.12);
   background-color: #FFFFFF;
   border-radius: 0.625rem;
   max-width: 61.625rem;
   text-align: start;
-  padding: 1.5rem;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+
+  &.readability--scores > h3 {
+    padding-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid #F1F1F1;
+  }
+
+  &.readability--scores > div {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #F1F1F1;
+    padding: 0.25rem 0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &.readability--scores > div > h4 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    text-align: right;
+    color: black;
+  }
+
+  &.readability--scores > div > h5 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: #757575;
+  }
 
   @include breakpoints.desktop {
     margin-left: 6.75rem;
