@@ -12,6 +12,7 @@ export const WordCounter = () => {
   const [lineHeight, setLineHeight] = useState(24);
   const [backgroundColor, setBackgroundColor] = useState("#ffffff");
   const [fontColor, setFontColor] = useState("#000000");
+  const [blogWidth, setBlogWidth] = useState(890);
   // Removing "px/rem/em" for now
   // const [active, setActive] = useState("px");
 
@@ -37,6 +38,7 @@ export const WordCounter = () => {
     setLineHeight(24);
     setBackgroundColor("#ffffff");
     setFontColor("#000000");
+    setBlogWidth(890);
   }
 
   // const handleMetric = (value) => {
@@ -96,13 +98,33 @@ export const WordCounter = () => {
           />
         </div>
       </div>
+      <div className='blogWidth--section'>
+        <div className="blogWidth--title">
+          <h5>Blog Width</h5>
+        </div>
+        <input
+          type="number"
+          value={blogWidth}
+          onChange={e => setBlogWidth(e.target.value)}
+        />
+        <br />
+        <input 
+          type="range" 
+          min="100" 
+          max="1000"
+          value={blogWidth} 
+          onChange={e => setBlogWidth(e.target.value)}
+          className='blogWidth--slider' 
+        />
+      </div>
       <div className="input--area">
         <textarea 
           style={{ 
             fontSize: `${fontSize}px`, 
             lineHeight: `${lineHeight}px`,
             backgroundColor: `${backgroundColor}`,
-            color: `${fontColor}`
+            color: `${fontColor}`,
+            width: `${blogWidth}px`
           }} 
           className="text-area" 
           onChange={(e) => handleChange(e)}
