@@ -85,17 +85,50 @@
 
 .text-area {
   font-family: 'Poppins', sans-serif;
-  width: 61.625rem;
+  max-width: 100%;
   min-height: 27.3125rem;
   height: fit-content;
-  padding: 45px 2.5rem;
+  padding: 15px 0.5rem;
+  resize: none;
+  outline: none;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  margin-top: 0;
+  border: none;
+  
+  @include breakpoints.desktop {
+    // margin-left: 6.75rem;
+    // margin-top: 20px;
+    // border-top: 1px dashed #979797;
+    // border-radius: 10px;
+    max-width: 61.625rem;
+    resize: none;
+    outline: none;
+    border: none;
+    padding: 45px 2.5rem;
+  }
+
+  @include breakpoints.mobile {
+    width: 500px !important;
+    word-wrap: normal;
+  }
+}
+
+.input--area {
+  max-width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-family: 'Poppins', sans-serif;
+  min-height: 27.3125rem;
+  height: fit-content;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
   border: 1px dashed #979797;
   border-top: none;
   border-radius: 0 0 10px 10px;
   resize: none;
   outline: none;
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
   margin-top: 0;
   
   @include breakpoints.desktop {
@@ -103,15 +136,9 @@
     margin-top: 20px;
     border-top: 1px dashed #979797;
     border-radius: 10px;
+    padding: 1rem 1.5rem;
+    width: 61.625rem;
   }
-}
-
-.input--area {
-  width: 100%;
-  margin-top: 0;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
 }
 
 .output--area {
@@ -217,7 +244,7 @@ input[type=range]::-moz-range-track {
   flex-direction: column;
 }
 
-// OLD STYLES
+// UNUSED REM, EM, PX STYLES
 
 // .metric--selectors {
 //   margin-left: 6.75rem;

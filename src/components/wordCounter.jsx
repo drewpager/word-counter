@@ -111,7 +111,7 @@ export const WordCounter = () => {
         <input 
           type="range" 
           min="100" 
-          max="1000"
+          max="890"
           value={blogWidth} 
           onChange={e => setBlogWidth(e.target.value)}
           className='blogWidth--slider' 
