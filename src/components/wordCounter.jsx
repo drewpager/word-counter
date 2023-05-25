@@ -104,6 +104,8 @@ export const WordCounter = () => {
         </div>
         <input
           type="number"
+          min="100"
+          max="890"
           value={blogWidth}
           onChange={e => setBlogWidth(e.target.value)}
         />
@@ -117,7 +119,7 @@ export const WordCounter = () => {
           className='blogWidth--slider' 
         />
       </div>
-      <div className="input--area">
+      <div className="input--area" style={{ backgroundColor: `${backgroundColor}` }}>
         <textarea 
           style={{ 
             fontSize: `${fontSize}px`, 
