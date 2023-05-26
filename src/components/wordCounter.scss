@@ -4,6 +4,13 @@
 .container {
   width: 100%;
   overflow-x: hidden;
+
+  @include breakpoints.desktop {
+    display: grid;
+    // grid-template-columns: 1fr 18.125rem;
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 10rem 2rem 10rem 10rem 43.6rem 1fr;
+  }
 }
 
 .heading-text {
@@ -15,6 +22,9 @@
   text-align: start;
 
   @include breakpoints.desktop {
+      display: grid;
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
       margin-left: 6.75rem;
   }
 }
@@ -27,6 +37,15 @@
   border-radius: 0.125rem;
   border: none;
   cursor: pointer;
+
+  @include breakpoints.desktop {
+    display: grid;
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    align-content: center;
+    justify-self: flex-end;
+    margin-right: 3.5rem;
+  }
 }
 
 .text--modifiers {
@@ -35,13 +54,15 @@
   align-items: flex-start;
   border: 0.0625rem dashed #979797;
   border-radius: 0.625rem;
-  max-width: 61.625rem;
   height: fit-content;
   margin-top: 1.25rem;
   margin-right: 1.5rem;
   margin-left: 1.5rem;
   padding: 15px 18px;
   justify-content: space-between;
+  text-transform: uppercase;
+  color: #757575;
+  font-size: 0.75rem;
 
     & > p {
       font-family: 'GT America', sans-serif;
@@ -56,9 +77,18 @@
     }
 
   @include breakpoints.desktop {
+    display: grid;
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
     margin-left: 6.75rem;
-    padding: 1.5rem 1.25rem;
-    justify-content: space-between;
+    padding: 1.5rem 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-right: 3.5rem;
+
+    & > div {
+      display: inline-block;
+      align-items: baseline;
+    }
   }
 
   @include breakpoints.mobile {
@@ -71,24 +101,47 @@
 
     :nth-child(2), :nth-child(3) {
       width: 100%;
-      // align-content: baseline;
       text-align: left;
     }
 
     :nth-child(4), :nth-child(5) {
       width: 50%;
-      // align-content: baseline;
       text-align: left;
     }
   }
 }
 
+.blogWidth--section {
+  display: none;
+
+  @include breakpoints.mobile {
+    display: none;
+  }
+
+  @include breakpoints.desktop {
+    display: grid;
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+    border: 1px dashed #979797;
+    padding: 1.5rem;
+    margin-left: 6.75rem;
+    margin-right: 1.5rem;
+    border-radius: 10px 10px 0 0;
+    margin-right: 3.5rem;
+  }
+
+}
+.blogWidth--title {
+  display: flex;
+  text-transform: uppercase;
+  flex-direction: column;
+}
+
 .text-area {
   font-family: 'Poppins', sans-serif;
-  max-width: 100%;
   min-height: 27.3125rem;
   height: fit-content;
-  padding: 15px 0.5rem;
+  padding: 1rem;
   resize: none;
   outline: none;
   margin-left: 1.5rem;
@@ -101,11 +154,14 @@
     // margin-top: 20px;
     // border-top: 1px dashed #979797;
     // border-radius: 10px;
-    max-width: 61.625rem;
+    display: grid;
+    grid-column: 1 / 2;
+    grid-row: 5 / 6;
     resize: none;
     outline: none;
     border: none;
     padding: 45px 2.5rem;
+    margin-right: 3.5rem;
   }
 
   @include breakpoints.mobile {
@@ -115,7 +171,6 @@
 }
 
 .input--area {
-  max-width: 100%;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -132,29 +187,48 @@
   margin-top: 0;
   
   @include breakpoints.desktop {
+    display: grid;
+    grid-column: 1 / 2;
+    grid-row: 5 / 6;
     margin-left: 6.75rem;
-    margin-top: 20px;
-    border-top: 1px dashed #979797;
-    border-radius: 10px;
+    margin-right: 1.5rem;
+    border: 1px dashed #979797;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
     padding: 1rem 1.5rem;
-    width: 61.625rem;
+    margin-right: 3.5rem;
   }
 }
 
 .output--area {
-  margin-top: 1rem;
   background-color: #F1F1F1;
-  padding: 3rem 1.5rem;
+
+  @include breakpoints.desktop {
+    display: grid;
+    grid-row: 1 / 6;
+  }
+
+  @include breakpoints.mobile {
+    margin-top: 1rem;
+    padding: 3rem 1.5rem;
+  }
 }
 
 .readability--scores {
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.12);
   background-color: #FFFFFF;
   border-radius: 0.625rem;
-  max-width: 61.625rem;
+  // max-width: 100%;
   text-align: start;
   padding: 1rem 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+
+  @include breakpoints.desktop {
+    display: grid;
+    grid-column: 2 / 3;
+    height: max-content;
+    margin: 1.875rem;
+  }
 
   &.readability--scores > h3 {
     padding-bottom: 1rem;
@@ -189,18 +263,25 @@
     margin-bottom: 0.5rem;
     color: #757575;
   }
-
-  @include breakpoints.desktop {
-    margin-left: 6.75rem;
-  }
 }
 
 input[type=number] {
-  width: 8.2rem;
+  width: 10.6rem;
   height: 2.3rem;
   border: 1px solid #ccc;
   padding: 5px;
   font-size: 16px;
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+select {
+  width: 10.6rem;
+  height: 2.3rem;
+  border: 1px solid #ccc;
+  padding: 5px;
+  font-size: 14px;
   text-align: center;
   background-color: #ffffff;
   border-radius: 5px;
@@ -218,30 +299,6 @@ input[type=range]::-webkit-slider-runnable-track {
 
 input[type=range]::-moz-range-track {
   color: #1A0DAB;
-}
-
-.blogWidth--section {
-  display: flex;
-  border: 1px dashed #979797;
-  border-radius: 10px;
-  max-width: 61.625rem;
-  padding: 1.5rem;
-
-  @include breakpoints.mobile {
-    display: none;
-  }
-
-  @include breakpoints.desktop {
-    margin-left: 6.75rem;
-    border: 1px dashed #979797;
-    border-radius: 10px;
-  }
-
-}
-.blogWidth--title {
-  display: flex;
-  text-transform: uppercase;
-  flex-direction: column;
 }
 
 // UNUSED REM, EM, PX STYLES
