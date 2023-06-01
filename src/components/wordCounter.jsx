@@ -66,6 +66,7 @@ export const WordCounter = () => {
             defaultValue={fontSize}
             value={fontSize}
             onChange={(e) => setFontSize(e.target.value)} 
+            className='fontSize--input'
           />
         </div>
         <div>
@@ -77,25 +78,50 @@ export const WordCounter = () => {
             defaultValue={lineHeight}
             value={lineHeight}
             onChange={(e) => setLineHeight(e.target.value)} 
+            className='lineHeight--input'
             />
         </div>
         <div>
           <p>Text Color</p>
-          <input 
-            type="color" 
-            defaultValue={fontColor} 
-            value={fontColor}
-            onChange={(e) => setFontColor(e.target.value)}
-          />
+          <div className="fontColor--input">
+            <input 
+              type="text" 
+              value={fontColor}
+              onChange={(e) => setFontColor(e.target.value)} 
+              id="background" 
+              className='textColor--input'
+            />
+            <input 
+              type="color" 
+              className='color-picker'
+              defaultValue={fontColor} 
+              value={fontColor}
+              onChange={(e) => setFontColor(e.target.value)}
+              tabIndex={-1}
+              id="backgroundColorPicker"
+            />
+          </div>
         </div>
         <div>
           <p>Background Color</p>
+          <div className="fontColor--input">
+            <input 
+              type="text" 
+              value={backgroundColor}
+              onChange={(e) => setBackgroundColor(e.target.value)}
+              id="background" 
+              className='textColor--input'
+            />
           <input 
             type="color" 
+            className='color-picker'
             defaultValue={backgroundColor} 
             value={backgroundColor}
             onChange={(e) => setBackgroundColor(e.target.value)}
+            tabIndex={-1}
+            id="backgroundColorPicker"
           />
+          </div>
         </div>
       </div>
       <div className='blogWidth--section'>
@@ -108,6 +134,7 @@ export const WordCounter = () => {
           max="890"
           value={blogWidth}
           onChange={e => setBlogWidth(e.target.value)}
+          className='blogWidth--input'
         />
         <br />
         <input 
@@ -145,7 +172,7 @@ export const WordCounter = () => {
           <h3>Details</h3>
           <div><h5>Words</h5><h4>{wordCount}</h4></div>
           <div><h5>Characters</h5><h4>{charCount}</h4></div>
-          <div><h5>Characters</h5><h4>{charCount}</h4></div>
+          <div><h5>Avg. Characters per line</h5><h4>{charCount}</h4></div>
           <div><h5>Sentences</h5><h4>{sentenceCount}</h4></div>
           <div><h5>Paragraphs</h5><h4>{paragraphCount}</h4></div>
           <div><h5>Read time</h5><h4>{readTime} {readTime < 2 ? "Minute" : "Minutes"}</h4></div>
