@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // import './wordCounter.css';
 import './wordCounter.scss';
+import GoogleFontLoader from 'react-google-font-loader';
 
 export const WordCounter = () => {
   const [wordCount, setWordCount] = useState(0);
@@ -9,6 +10,7 @@ export const WordCounter = () => {
   const [paragraphCount, setparagraphCount] = useState(0);
   const [readTime, setReadTime] = useState(0);
   const [fontSize, setFontSize] = useState(16);
+  const [textFont, setTextFont] = useState("Arial");
   const [lineHeight, setLineHeight] = useState(24);
   const [backgroundColor, setBackgroundColor] = useState("#ffffff");
   const [fontColor, setFontColor] = useState("#000000");
@@ -17,6 +19,26 @@ export const WordCounter = () => {
   // const [active, setActive] = useState("px");
 
   const WORDS_PER_MINUTE = 238;
+
+
+  const fonts = [
+    {
+      font: 'Roboto',
+      weights: [400],
+    },
+    {
+      font: 'Roboto Mono',
+      // weights: [400],
+    },
+    {
+      font: 'Arial',
+      // weights: [400],
+    },
+    {
+      font: 'Montserrat',
+      // weights: [400],
+    }
+  ];
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -39,6 +61,7 @@ export const WordCounter = () => {
     setBackgroundColor("#ffffff");
     setFontColor("#000000");
     setBlogWidth(890);
+    setTextFont("Arial");
   }
 
   // const handleMetric = (value) => {
@@ -53,8 +76,13 @@ export const WordCounter = () => {
       <div className="text--modifiers">
         <div>
           <p>Google Fonts</p>
-          <select width="100%">
-            <option value="arial">Arial</option>
+          <select className="fonts--input" onChange={(e) => setTextFont(e.target.value)}>
+            {fonts.map((font, index) => (
+              <option 
+                value={font.font}
+                key={index}
+            >{font.font}</option>
+            ))}
           </select>
         </div>
         <div>
@@ -153,7 +181,8 @@ export const WordCounter = () => {
             lineHeight: `${lineHeight}px`,
             backgroundColor: `${backgroundColor}`,
             color: `${fontColor}`,
-            width: `${blogWidth}px`
+            width: `${blogWidth}px`,
+            fontFamily: `${textFont}`
           }} 
           className="text-area" 
           onChange={(e) => handleChange(e)}
