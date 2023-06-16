@@ -96,44 +96,61 @@
     grid-template-columns: 20% 20% 20% 20% 20%;
     grid-template-rows: 1fr;
     padding: 1.5rem 2rem;
-    border-radius: 0.625rem 0.625rem 0 0;
+    border-radius: 0.625rem;
     align-content: left;
-
+    height: 6.6785rem;
+    justify-content: space-between;
+    
     :first-child {
       text-align: left;
-      grid-column: 1 / 2;
-      grid-row: 1 / -1;
       margin: 0 2rem 1rem 0;
+      
+      & > select  {
+        grid-column: 1 / 2;
+        grid-row: 1 / -1;
+        height: 3rem;
+      }
     }
 
     :nth-child(2) {
       text-align: left;
-      grid-column: 2 / 3;
-      grid-row: 1 / -1;
-      // margin-right: 2rem;
       margin: 0 2rem 1rem 0;
+      & > input {
+        grid-column: 2 / 3;
+        grid-row: 1 / -1;
+      }
     }
     
     :nth-child(3) {
       text-align: left;
-      grid-column: 3 / 4;
-      grid-row: 1 / -1;
-      // margin-right: 1rem;
       margin: 0 2rem 1rem 0;
+
+      & > input {
+        grid-column: 3 / 4;
+        grid-row: 1 / -1;
+      }
     }
 
     :nth-child(4) {
       text-align: left;
-      grid-column: 4 / 5;
-      grid-row: 1 / -1;
       margin: 0 2rem 1rem 0;
+
+      & > input {
+        grid-column: 4 / 5;
+        grid-row: 1 / -1;
+        margin-left: 2rem;  
+      }
     }
 
     :nth-child(5) {
       text-align: left;
-      grid-column: 5 / 6;
-      grid-row: 1 / -1;
       margin: 0 2rem 1rem 0;
+
+      & > input {
+        grid-column: 5 / 6;
+        grid-row: 1 / -1;
+        margin-left: 2rem;
+      }
     }
 
     & > div {
@@ -149,6 +166,7 @@
     padding: 1.5rem 2rem;
     border-radius: 0.625rem 0.625rem 0 0;
     align-content: left;
+    gap: 0.25rem;
 
     :first-child {
       text-align: left;
@@ -159,7 +177,7 @@
       text-align: left;
       grid-column: 1 / 2;
       grid-row: 2 / 3;
-      margin-right: 2rem;
+      margin-right: 0.85rem;
     }
     
     :nth-child(3) {
@@ -174,13 +192,15 @@
       grid-column: 1 / 2;
       grid-row: 3 / 4;
       margin: 0 2rem 1rem 0;
+      width: 100%;
     }
 
     :nth-child(5) {
       text-align: left;
       grid-column: 2 / 3;
       grid-row: 3 / 4;
-      margin: 0 2rem 1rem 0;
+      margin: 0 2rem 0 0;
+      width: 100%;
     }
   }
 }
@@ -198,15 +218,20 @@
     grid-row: 4 / 5;
     border: 1px dashed #979797;
     padding: 1.5rem;
-    margin-left: 6.75rem;
+    margin-left: 1.5rem;
     margin-right: 1.5rem;
     border-radius: 10px 10px 0 0;
-    margin-right: 3.5rem;
+    margin-top: 2.5rem;
+    width: 91.5%;
+    height: fit-content;
   }
 
 }
 .blogWidth--title {
   display: flex;
+  color: #757575;
+  font-size: 1rem;
+  justify-self: flex-start;
   text-transform: uppercase;
   flex-direction: column;
 }
@@ -215,11 +240,12 @@
   // font-family: 'Poppins', sans-serif;
   min-height: 27.3125rem;
   height: fit-content;
-  padding: 1rem;
+  width: fit-content;
+  padding: 2rem;
   resize: none;
   outline: none;
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
+  margin-left: 1rem;
+  // margin-right: 5rem;
   margin-top: 0;
   border: none;
   
@@ -235,7 +261,8 @@
     outline: none;
     border: none;
     padding: 45px 2.5rem;
-    margin-right: 3.5rem;
+    margin-right: 5rem;
+    padding-right: 5rem;
   }
 
   @include breakpoints.mobile {
@@ -258,19 +285,20 @@
   border-radius: 0 0 10px 10px;
   resize: none;
   outline: none;
-  margin-top: 0;
+  margin-top: 1.5rem;
   
   @include breakpoints.desktop {
     display: grid;
     grid-column: 1 / 2;
     grid-row: 5 / 6;
-    margin-left: 6.75rem;
+    margin-left: 1.5rem;
     margin-right: 1.5rem;
     border: 1px dashed #979797;
     border-top: none;
     border-radius: 0 0 10px 10px;
     padding: 1rem 1.5rem;
-    margin-right: 3.5rem;
+    margin-top: 5rem;
+    width: 91.5%;
   }
 
   @include breakpoints.mobile {
@@ -304,7 +332,6 @@
 }
 
 input#background {
-  // max-width: 100%;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   height: 2.31rem;
@@ -454,7 +481,8 @@ select {
 input[type=range] {
   background-color: #979797;
   color: #1A0DAB;
-  width: 80%;
+  width: 75%;
+  justify-self: flex-end;
 }
 
 input[type=range]::-webkit-slider-runnable-track {

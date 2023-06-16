@@ -11,10 +11,13 @@ export const WordCounter = () => {
   const [readTime, setReadTime] = useState(0);
   const [fontSize, setFontSize] = useState(16);
   const [textFont, setTextFont] = useState("Arial");
-  const [lineHeight, setLineHeight] = useState(24);
+  const [lineHeight, setLineHeight] = useState(22);
   const [backgroundColor, setBackgroundColor] = useState("#ffffff");
   const [fontColor, setFontColor] = useState("#000000");
   const [blogWidth, setBlogWidth] = useState(890);
+  const [textSizeScore, setTextSizeScore] = useState("Good");
+  const [lineHeightScore, setLineHeightScore] = useState("Good");
+  const [blogWidthScore, setBlogWidthScore] = useState("Good");
   // Removing "px/rem/em" for now
   // const [active, setActive] = useState("px");
 
@@ -49,7 +52,7 @@ export const WordCounter = () => {
     let readTime = Math.ceil(words.length / WORDS_PER_MINUTE);
 
     setCharCount(length.length);
-    setWordCount(words.length);
+    setWordCount(words.length - 1);
     setsentenceCount(sentences.length - 1);
     setparagraphCount(paragraphs.length);
     setReadTime(readTime);
@@ -57,17 +60,62 @@ export const WordCounter = () => {
 
   const handleReset = () => {
     setFontSize(16);
-    setLineHeight(24);
+    setLineHeight(22);
     setBackgroundColor("#ffffff");
     setFontColor("#000000");
     setBlogWidth(890);
     setTextFont("Arial");
   }
 
-  // const handleMetric = (value) => {
-  //   setActive(value);
-  //   console.log(active)
-  // }
+  const handleTextSizeScore = (value) => {
+    if (value < 16) {
+      setTextSizeScore("Poor")
+    }
+    else if (value >= 16 && value <= 18) {
+      setTextSizeScore("Good")
+    }
+    else if (value >= 19) {
+      setTextSizeScore("Great")
+    }
+  }
+
+  const handleLineHeight = (fontSize, lineHeight) => {
+    let lineHeightValue = lineHeight / fontSize;
+    
+    if (lineHeightValue < 1.3) {
+      setLineHeightScore("Poor")
+    }
+
+    if (lineHeightValue >= 1.3 && lineHeightValue <= 1.4) {
+      setLineHeightScore("Great")
+    }
+
+    if (lineHeightValue >= 1.5 && lineHeightValue <= 1.6) {
+      setLineHeightScore("Good")
+    }
+
+    if (lineHeightValue >= 1.7) {
+      setLineHeightScore("Poor")
+    }
+  }
+
+  const handleBlogWidthScore = (blogWidth) => {
+    if (blogWidth < 400) {
+      setBlogWidthScore("Poor")
+    }
+
+    if (blogWidth >= 401 && blogWidth <= 500) {
+      setBlogWidthScore("Great")
+    }
+
+    if (blogWidth >= 501 && blogWidth <= 600) {
+      setBlogWidthScore("Good")
+    }
+
+    if (blogWidth >= 601) {
+      setBlogWidthScore("Poor")
+    }
+  }
 
   return (
     <div className="container">
@@ -93,7 +141,7 @@ export const WordCounter = () => {
             max="100" 
             defaultValue={fontSize}
             value={fontSize}
-            onChange={(e) => setFontSize(e.target.value)} 
+            onChange={(e) => { setFontSize(e.target.value); handleTextSizeScore(e.target.value) }} 
             className='fontSize--input'
           />
         </div>
@@ -105,7 +153,7 @@ export const WordCounter = () => {
             max="100" 
             defaultValue={lineHeight}
             value={lineHeight}
-            onChange={(e) => setLineHeight(e.target.value)} 
+            onChange={(e) => { setLineHeight(e.target.value); handleLineHeight(fontSize, e.target.value) }} 
             className='lineHeight--input'
             />
         </div>
@@ -161,7 +209,7 @@ export const WordCounter = () => {
           min="100"
           max="890"
           value={blogWidth}
-          onChange={e => setBlogWidth(e.target.value)}
+          onChange={e => { setBlogWidth(e.target.value); handleBlogWidthScore(e.target.value) }}
           className='blogWidth--input'
         />
         <br />
@@ -170,7 +218,7 @@ export const WordCounter = () => {
           min="100" 
           max="890"
           value={blogWidth} 
-          onChange={e => setBlogWidth(e.target.value)}
+          onChange={e => { setBlogWidth(e.target.value); handleBlogWidthScore(e.target.value) }}
           className='blogWidth--slider' 
         />
       </div>
@@ -192,10 +240,10 @@ export const WordCounter = () => {
       <div className="output--area">
         <div className="readability--scores">
           <h3>Readability Scores</h3>
-          <div><h5>Text Size</h5><h4>Good</h4></div>
-          <div><h5>Line Height</h5><h4>Good</h4></div>
-          <div><h5>Contrast</h5><h4>Poor</h4></div>
-          <div><h5>Blog Width</h5><h4>Bad</h4></div>
+          <div><h5>Text Size</h5><h4 color="green">{textSizeScore}</h4></div>
+          <div><h5>Line Height</h5><h4>{lineHeightScore}</h4></div>
+          {/* <div><h5>Contrast</h5><h4>Poor</h4></div> */}
+          <div><h5>Blog Width</h5><h4>{blogWidthScore}</h4></div>
         </div>
         <div className="readability--scores">
           <h3>Details</h3>
